@@ -15,9 +15,9 @@ header, footer {
 main {
     min-height: 70vh;
     padding: 2rem;
-    background: url('/images/placeholder\ image.png') no-repeat center center fixed;
-    /* linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('/images/OB_PIC.JPG'); */
+    /* background: url('/images/placeholder\ image.png') no-repeat center center fixed; */
+    background:  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('/images/OB_PIC.JPG') no-repeat center center fixed; 
     background-size: cover;
 }
 
@@ -67,6 +67,12 @@ main {
 
 .navbar-links li a:hover {
     color: #b52a37;
+}
+
+.quiz-header{
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 1rem;
 }
 
 .categories-section {

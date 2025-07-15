@@ -2,6 +2,7 @@ import { questionsHtmlIntro } from './questions-html-intro.js';
 import { questionsTextFormatting } from './questions-text-formatting.js';
 import { questionsLists } from './questions-lists.js';
 import { questionsLinks } from './questions-links.js';
+import { questionsImages } from './questions-images.js'; 
 import { questionsMedia } from './questions-media.js';
 import { questionsTables } from './questions-tables.js';
 import { questionsForms } from './questions-forms.js';
@@ -159,6 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }));
     }
 
+    // Show exit confirmation modal
     function showExitModal() {
         const modalRoot = document.getElementById('modal-root');
         modalRoot.innerHTML = `
@@ -240,7 +242,8 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'Text Formatting': arr = questionsTextFormatting; break;
             case 'Lists': arr = questionsLists; break;
             case 'Links': arr = questionsLinks; break;
-            case 'Media (Images, Audio, Video)': arr = questionsMedia; break;
+            case 'Images': arr = questionsImages; break; // No questions for Images
+            case 'Media (Audio, Video)': arr = questionsMedia; break;
             case 'Tables': arr = questionsTables; break;
             case 'Forms': arr = questionsForms; break;
             case 'Other Questions (Semantic tags and attributes)': arr = questionsOther; break;
@@ -298,6 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 
+    //Navigation bar and footer rendering
     function renderNavbar() {
         const navbar = document.getElementById('navbar');
         navbar.innerHTML = `
@@ -360,7 +364,8 @@ document.addEventListener('DOMContentLoaded', function() {
             'Text Formatting',
             'Lists',
             'Links',
-            'Media (Images, Audio, Video)',
+            'Images',
+            'Media',
             'Tables',
             'Forms',
             'Other Questions (Semantic tags and attributes)'

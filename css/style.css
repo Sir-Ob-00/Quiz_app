@@ -15,7 +15,10 @@ header, footer {
 main {
     min-height: 70vh;
     padding: 2rem;
-    background: #F8F9FA;
+    background: url('/images/placeholder\ image.png') no-repeat center center fixed;
+    /* linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('/images/OB_PIC.JPG'); */
+    background-size: cover;
 }
 
 #modal-root {
@@ -63,7 +66,7 @@ main {
 }
 
 .navbar-links li a:hover {
-    color: #17A2B8;
+    color: #b52a37;
 }
 
 .categories-section {
@@ -148,6 +151,44 @@ main {
     color: #212529;
     margin-bottom: 2rem;
 }
+#confirm-exit{
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+#confirm-exit:hover {
+    background: #b52a37;
+}
+#cancel-exit{
+    background: #17A2B8;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#cancel-exit:hover {
+    background: #007BFF;
+}
+
+#close-no-questions {
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
 
 #continue-btn {
     background: #17A2B8;
@@ -162,6 +203,32 @@ main {
 
 #continue-btn:hover {
     background: #007BFF;
+}
+
+#proceed-quiz-btn{
+    background: #17A2B8;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#proceed-quiz-btn:hover {
+    background: #007BFF;
+}
+
+#go-home-timeup{
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
 .results-section {
@@ -268,7 +335,7 @@ main {
     transition: 0.3s;
 }
 
-/* Remove user-select from .categories-section, keep only for .question-box and .result-question */
+
 .question-box, .result-question {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -302,7 +369,7 @@ main {
         width: 180px;
         box-shadow: 0 4px 24px rgba(0,0,0,0.10);
         border-radius: 0 0 10px 10px;
-        padding: 1rem 0;
+        padding: 1rem;
         z-index: 1000;
     }
     .navbar-links.active {

@@ -10,6 +10,10 @@ import { questionsOther } from './questions-other.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     const mainContent = document.getElementById('main-content');
+    
+    // Detect current page
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    
     // Quiz state
     let quizState = {
         questions: [],
@@ -19,32 +23,53 @@ document.addEventListener('DOMContentLoaded', function() {
         interval: null,
         category: null
     };
-
-    // Restore quiz state if present in sessionStorage
-    let savedState = sessionStorage.getItem('quizState');
-    if (savedState) {
-        quizState = JSON.parse(savedState);
-        quizState.questions = getQuestionsForCategory(quizState.category);
-        renderNavbar();
-        renderFooter();
-        renderQuestionPage();
-        startTimer();
-        return;
+    
+    // App state
+    let appState = {
+        hamburgerEnabled: false
+    };
+    
+    // Enable hamburger menu for About and Contact pages
+    if (currentPage === 'about.html' || currentPage === 'contact.html') {
+        appState.hamburgerEnabled = true;
     }
 
-    // Check for time up on load
-    if (sessionStorage.getItem('quizTimeUp') === '1') {
+    // Only run quiz-specific code on the main page
+    if (currentPage === 'index.html' || currentPage === '') {
+        // Restore quiz state if present in sessionStorage
+        let savedState = sessionStorage.getItem('quizState');
+        if (savedState) {
+            quizState = JSON.parse(savedState);
+            quizState.questions = getQuestionsForCategory(quizState.category);
+            // Enable hamburger menu if quiz is in progress
+            appState.hamburgerEnabled = true;
+            renderNavbar();
+            renderFooter();
+            renderQuestionPage();
+            startTimer();
+            return;
+        }
+
+        // Check for time up on load
+        if (sessionStorage.getItem('quizTimeUp') === '1') {
+            // Enable hamburger menu if time is up (user has interacted with quiz)
+            appState.hamburgerEnabled = true;
+            renderNavbar();
+            renderFooter();
+            showTimeUpModal();
+            return;
+        }
+
+        // If no quiz in progress, render home and welcome modal
+        renderNavbar();
+        renderHomePage();
+        renderFooter();
+        renderWelcomeModal();
+    } else {
+        // For About and Contact pages, just render navbar and footer
         renderNavbar();
         renderFooter();
-        showTimeUpModal();
-        return;
     }
-
-    // If no quiz in progress, render home and welcome modal
-    renderNavbar();
-    renderHomePage();
-    renderFooter();
-    renderWelcomeModal();
 
     function startQuiz(category) {
         quizState.questions = getQuestionsForCategory(category);
@@ -306,16 +331,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const navbar = document.getElementById('navbar');
         navbar.innerHTML = `
             <nav class="navbar">
-                <div class="navbar-brand">Quiz App</div>
-                <div class="hamburger" id="hamburger" tabindex="0" aria-label="Open navigation" aria-expanded="false">
+                <div class="navbar-brand">Master Quiz</div>
+                <div class="hamburger" id="hamburger" tabindex="0" aria-label="Open navigation" aria-expanded="false" style="${!appState.hamburgerEnabled ? 'pointer-events: none; opacity: 0.5;' : ''}">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
                 <ul class="navbar-links" id="navbar-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
         `;
@@ -323,16 +348,28 @@ document.addEventListener('DOMContentLoaded', function() {
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navbar-links');
         hamburger.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-            hamburger.setAttribute('aria-expanded', !expanded);
-        });
-        hamburger.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
+            if (appState.hamburgerEnabled) {
                 navLinks.classList.toggle('active');
                 const expanded = hamburger.getAttribute('aria-expanded') === 'true';
                 hamburger.setAttribute('aria-expanded', !expanded);
             }
+        });
+        hamburger.addEventListener('keydown', function(e) {
+            if (appState.hamburgerEnabled && (e.key === 'Enter' || e.key === ' ')) {
+                navLinks.classList.toggle('active');
+                const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+                hamburger.setAttribute('aria-expanded', !expanded);
+            }
+        });
+        
+        // Add navigation event listeners
+        const navLinksElements = document.querySelectorAll('.navbar-links a');
+        navLinksElements.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Close mobile menu when link is clicked
+                navLinks.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
         });
     }
 
@@ -435,6 +472,9 @@ document.addEventListener('DOMContentLoaded', function() {
         modalRoot.classList.add('active');
         document.getElementById('continue-btn').onclick = function() {
             modalRoot.classList.remove('active');
+            // Enable hamburger menu after clicking continue
+            appState.hamburgerEnabled = true;
+            renderNavbar();
         };
     }
 

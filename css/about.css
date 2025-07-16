@@ -1,0 +1,272 @@
+/* About Page Styles */
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.about-hero {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 3rem 0;
+}
+
+.about-hero h1 {
+    font-size: 3rem;
+    color: #007BFF;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.about-hero .subtitle {
+    font-size: 1.2rem;
+    color: #6c757d;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.mission-section,
+.features-section,
+.topics-section,
+.coming-soon-section {
+    padding: 2rem 0;
+}
+
+.mission-section h2,
+.features-section h2,
+.topics-section h2,
+.coming-soon-section h2 {
+    font-size: 2.5rem;
+    color: #007BFF;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.mission-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #495057;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 123, 255, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 123, 255, 0.15);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    color: #007BFF;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.feature-card p {
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+/* Topics Grid */
+.topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.topic-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.topic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.topic-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #007BFF;
+}
+
+.topic-card p {
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+.topic-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.topic-card li {
+    padding: 0.5rem 0;
+    color: #495057;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.topic-card li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Coming Soon Section */
+.coming-soon-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.coming-soon-item {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 4px solid #007BFF;
+    transition: transform 0.3s ease;
+}
+
+.coming-soon-item:hover {
+    transform: translateX(5px);
+}
+
+.coming-soon-item h3 {
+    color: #007BFF;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.coming-soon-item p {
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideInLeft 1s ease forwards;
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideInRight 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-container {
+        padding: 1rem;
+    }
+    
+    .about-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .about-hero .subtitle {
+        font-size: 1rem;
+    }
+    
+    .mission-section h2,
+    .features-section h2,
+    .topics-section h2,
+    .coming-soon-section h2 {
+        font-size: 2rem;
+    }
+    
+    .features-grid,
+    .topics-grid,
+    .coming-soon-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .feature-card,
+    .topic-card,
+    .coming-soon-item {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .about-hero {
+        padding: 2rem 0;
+    }
+    
+    .about-content {
+        gap: 2rem;
+    }
+    
+    .mission-section,
+    .features-section,
+    .topics-section,
+    .coming-soon-section {
+        padding: 1rem 0;
+    }
+} 

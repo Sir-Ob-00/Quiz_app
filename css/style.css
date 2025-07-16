@@ -372,7 +372,7 @@ main {
         right: 0;
         background: #007BFF;
         flex-direction: column;
-        width: 180px;
+        width: 100px;
         box-shadow: 0 4px 24px rgba(0,0,0,0.10);
         border-radius: 0 0 10px 10px;
         padding: 1rem;

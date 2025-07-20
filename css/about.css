@@ -20,7 +20,7 @@
 
 .about-hero .subtitle {
     font-size: 1.2rem;
-    color: #6c757d;
+    color: #fff;
     max-width: 600px;
     margin: 0 auto;
 }
@@ -51,7 +51,7 @@
 .mission-section p {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: #495057;
+    color: #fff;
     text-align: center;
     max-width: 800px;
     margin: 0 auto;

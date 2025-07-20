@@ -1,0 +1,589 @@
+/* Authentication UI Styles */
+
+/* Auth Modal */
+.auth-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.auth-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.auth-content,
+.profile-content {
+    background: #ffffff; /* Explicit light mode background */
+    color: #212529; /* Explicit light mode text */
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 400px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+/* Dark mode auth content styling */
+.dark-mode .auth-content,
+.dark-mode .profile-content {
+    background: #1a1a1a;
+    color: #ffffff;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+}
+
+.auth-modal.active .auth-content,
+.auth-modal.active .profile-content {
+    transform: scale(1);
+}
+
+/* Auth Header */
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-header h2 {
+    color: #007BFF;
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.auth-header p {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* Auth Form */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.auth-form .form-group {
+    margin-bottom: 0;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #495057; /* Explicit light mode text */
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: #ffffff; /* Explicit light mode background */
+    color: #212529; /* Explicit light mode text */
+}
+
+/* Dark mode form styling */
+.dark-mode .auth-form label {
+    color: #ffffff;
+}
+
+.dark-mode .auth-form input {
+    background: #000000;
+    color: #ffffff;
+    border-color: #333333;
+}
+
+.dark-mode .auth-form input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.auth-form small {
+    color: #6c757d;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+/* Auth Buttons */
+.auth-btn {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-btn:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}
+
+.auth-btn:active {
+    transform: translateY(0);
+}
+
+.auth-btn.loading {
+    pointer-events: none;
+}
+
+.btn-loading {
+    display: none;
+}
+
+.auth-btn.loading .btn-text {
+    display: none;
+}
+
+.auth-btn.loading .btn-loading {
+    display: inline;
+}
+
+/* Auth Footer */
+.auth-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.auth-footer p {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.auth-footer a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.auth-footer a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Modal Close Button */
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #6c757d;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.modal-close:hover {
+    background: #f8f9fa;
+    color: #495057;
+}
+
+/* Auth Messages */
+.auth-message {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.auth-message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.auth-message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Profile Content Styles */
+.profile-content {
+    max-width: 500px;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.profile-header h2 {
+    color: #007BFF;
+    margin-bottom: 1.5rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.user-avatar {
+    width: 60px;
+    height: 60px;
+    background: #007BFF;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.user-details h3 {
+    margin: 0 0 0.25rem 0;
+    color: #495057;
+}
+
+.user-details p {
+    margin: 0 0 0.25rem 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.user-details small {
+    color: #adb5bd;
+    font-size: 0.8rem;
+}
+
+/* Profile Stats */
+.profile-stats {
+    margin-bottom: 2rem;
+}
+
+.profile-stats h3 {
+    color: #495057;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.stat-item {
+    background: #f8f9fa; /* Explicit light mode background */
+    color: #212529; /* Explicit light mode text */
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+.stat-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode stat item styling */
+.dark-mode .stat-item {
+    background: #1a1a1a;
+    color: #ffffff;
+    border-color: #333333;
+}
+
+.dark-mode .stat-item:hover {
+    background: #2c2c2c;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}
+
+.stat-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007BFF;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Profile Actions */
+.profile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.profile-btn {
+    padding: 0.75rem 1.5rem;
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.profile-btn:hover {
+    background: #0056b3;
+    transform: translateY(-1px);
+}
+
+.profile-btn.danger {
+    background: #dc3545;
+}
+
+.profile-btn.danger:hover {
+    background: #c82333;
+}
+
+/* Navbar User Section */
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+}
+
+.username {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.user-section .profile-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.user-section .profile-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .auth-content,
+    .profile-content {
+        padding: 1.5rem;
+        width: 95%;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .user-info {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .user-section {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-content,
+    .profile-content {
+        padding: 1rem;
+    }
+    
+    .auth-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .auth-form input {
+        padding: 0.6rem;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .auth-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .user-avatar {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+} 
+
+.profile-actions.profile-actions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 700px) {
+    .profile-actions.profile-actions-grid {
+        grid-template-columns: 1fr;
+    }
+} 
+
+/* Score Update Section */
+.score-update-section {
+  margin: 2rem 0 1.5rem 0;
+  padding: 1rem 0 0.5rem 0;
+  border-top: 1px solid #eee;
+  color: #333; /* Explicit light mode text */
+}
+
+/* Dark mode score update section */
+.dark-mode .score-update-section {
+  border-top: 1px solid #333;
+  color: #ffffff;
+}
+.score-update-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+  color: #333;
+  font-weight: 600;
+}
+.score-update-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.score-update-list li {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #f2f2f2;
+  font-size: 1rem;
+  color: #222; /* Explicit light mode text */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Dark mode score update list */
+.dark-mode .score-update-list li {
+  border-bottom: 1px solid #333;
+  color: #ffffff;
+}
+.score-update-list li:last-child {
+  border-bottom: none;
+}
+.score-update-list .not-taken {
+  color: #aaa;
+  font-style: italic;
+}
+@media (max-width: 600px) {
+  .score-update-section {
+    margin: 1.2rem 0 1rem 0;
+    padding: 0.7rem 0 0.3rem 0;
+  }
+  .score-update-list li {
+    font-size: 0.97rem;
+    padding: 0.3rem 0;
+  }
+} 
+
+/* Reset Progress Confirmation Modal */
+.confirm-content {
+  text-align: center;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  border-radius: 10px;
+  background: #fff;
+  max-width: 370px;
+  margin: 0 auto;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+}
+.confirm-icon {
+  font-size: 2.7rem;
+  margin-bottom: 0.7rem;
+  color: #dc3545;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.confirm-content h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #dc3545;
+}
+.confirm-content p {
+  color: #444;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+}
+.confirm-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.2rem;
+}
+.confirm-actions .profile-btn.danger {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+}
+.confirm-actions .profile-btn {
+  min-width: 110px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background: #f7f7f7;
+  transition: background 0.2s, color 0.2s;
+}
+.confirm-actions .profile-btn:hover {
+  background: #e9ecef;
+}
+@media (max-width: 600px) {
+  .confirm-content {
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+    max-width: 98vw;
+  }
+  .confirm-actions {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .confirm-actions .profile-btn {
+    width: 100%;
+    min-width: 0;
+  }
+} 

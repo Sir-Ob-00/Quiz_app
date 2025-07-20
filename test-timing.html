@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Timing Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        .success { color: green; }
+        .error { color: red; }
+        .info { color: blue; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Dynamic Timing Test</h1>
+    
+    <div class="test-section">
+        <h2>Timer Calculation Test</h2>
+        <div id="timer-test-results"></div>
+        <button onclick="testTimerCalculation()">Test Timer Calculation</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Category Loading Test</h2>
+        <div id="category-test-results"></div>
+        <button onclick="testCategoryLoading()">Test Category Loading</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Instructions Modal Test</h2>
+        <div id="modal-test-results"></div>
+        <button onclick="testInstructionsModal()">Test Instructions Modal</button>
+    </div>
+
+    <script type="module">
+        // Import the modules
+        import QuestionLoader from '/js/questionLoader.js';
+        import PerformanceMonitor from '/js/performanceMonitor.js';
+        
+        // Initialize
+        window.questionLoader = new QuestionLoader();
+        window.performanceMonitor = new PerformanceMonitor();
+        
+        // Timer calculation function
+        window.calculateTimer = function(questionCount) {
+            return questionCount * 15;
+        };
+        
+        // Format time for display
+        window.formatTimeForDisplay = function(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            
+            if (minutes === 0) {
+                return `${remainingSeconds}s`;
+            } else if (remainingSeconds === 0) {
+                return `${minutes}m`;
+            } else {
+                return `${minutes}m ${remainingSeconds}s`;
+            }
+        };
+        
+        // Test functions
+        window.testTimerCalculation = function() {
+            const results = document.getElementById('timer-test-results');
+            results.innerHTML = '<p class="info">Testing timer calculation...</p>';
+            
+            const testCases = [5, 10, 15, 20];
+            let output = '<h3>Results:</h3><ul>';
+            
+            testCases.forEach(count => {
+                const seconds = window.calculateTimer(count);
+                const display = window.formatTimeForDisplay(seconds);
+                output += `<li class="success">${count} questions = ${seconds}s = ${display}</li>`;
+            });
+            
+            output += '</ul>';
+            results.innerHTML = output;
+        };
+        
+        window.testCategoryLoading = async function() {
+            const results = document.getElementById('category-test-results');
+            results.innerHTML = '<p class="info">Testing category loading...</p>';
+            
+            const categories = ['HTML Introduction', 'Lists', 'Forms'];
+            let output = '<h3>Results:</h3><ul>';
+            
+            for (const category of categories) {
+                try {
+                    const questions = await window.questionLoader.loadQuestionModule(category);
+                    const timer = window.calculateTimer(questions.length);
+                    const display = window.formatTimeForDisplay(timer);
+                    output += `<li class="success">${category}: ${questions.length} questions = ${display}</li>`;
+                } catch (error) {
+                    output += `<li class="error">${category}: Failed to load - ${error.message}</li>`;
+                }
+            }
+            
+            output += '</ul>';
+            results.innerHTML = output;
+        };
+        
+        window.testInstructionsModal = async function() {
+            const results = document.getElementById('modal-test-results');
+            results.innerHTML = '<p class="info">Testing instructions modal...</p>';
+            
+            try {
+                const category = 'HTML Introduction';
+                const questions = await window.questionLoader.loadQuestionModule(category);
+                const questionCount = questions.length;
+                const totalSeconds = window.calculateTimer(questionCount);
+                const timeDisplay = window.formatTimeForDisplay(totalSeconds);
+                
+                const output = `
+                    <h3>Instructions Modal Content:</h3>
+                    <div style="border: 1px solid #ddd; padding: 15px; background: #f9f9f9;">
+                        <h4>Instructions for ${category}</h4>
+                        <ul>
+                            <li>You have <b>${timeDisplay}</b> to complete ${questionCount} question${questionCount !== 1 ? 's' : ''}.</li>
+                            <li>Each question is on a separate page.</li>
+                            <li>Use <b>Next</b> and <b>Previous</b> to navigate.</li>
+                            <li>Click <b>Exit</b> anytime to leave the quiz (confirmation required).</li>
+                            <li>Unanswered questions will be highlighted before you can view results.</li>
+                        </ul>
+                    </div>
+                `;
+                
+                results.innerHTML = output;
+            } catch (error) {
+                results.innerHTML = `<p class="error">Failed to test instructions modal: ${error.message}</p>`;
+            }
+        };
+        
+        console.log('Test page initialized');
+    </script>
+</body>
+</html> 

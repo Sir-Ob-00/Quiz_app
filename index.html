@@ -5,12 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz App</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#007BFF">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Quiz App">
 </head>
 <body>
     <header id="navbar"></header>
     <main id="main-content"></main>
     <footer id="footer"></footer>
     <div id="modal-root"></div>
-    <script type="module" src="js/app.js"></script>
+    <script src="js/userManager.js?v=1.2"></script>
+    <script src="js/authUI.js?v=1.2"></script>
+    <script src="js/debug-loader.js?v=1.2"></script>
+    <script type="module" src="js/app.js?v=1.2"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // Clear old caches first
+                caches.keys().then(cacheNames => {
+                    return Promise.all(
+                        cacheNames.map(cacheName => {
+                            if (cacheName.includes('quiz-')) {
+                                console.log('Clearing old cache:', cacheName);
+                                return caches.delete(cacheName);
+                            }
+                        })
+                    );
+                }).then(() => {
+                    // Register new service worker
+                    return navigator.serviceWorker.register('/sw.js?v=1.1');
+                }).then(registration => {
+                    console.log('Service Worker registered successfully:', registration.scope);
+                }).catch(error => {
+                    console.log('Service Worker registration failed:', error);
+                });
+            });
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module Loading Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>Module Loading Test</h1>
+    <div id="results"></div>
+    <button onclick="testModuleLoading()">Test Module Loading</button>
+
+    <script type="module">
+        window.testModuleLoading = async function() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<div class="result">Testing module loading...</div>';
+            
+            try {
+                // Test direct import
+                console.log('Testing direct import...');
+                const module = await import('/js/questions-html-intro.js');
+                console.log('Module loaded:', module);
+                
+                const questions = module.questionsHtmlIntro;
+                console.log('Questions:', questions);
+                
+                results.innerHTML = `
+                    <div class="success">
+                        ✅ Module loaded successfully!<br>
+                        📊 Found ${questions.length} questions<br>
+                        ⏱️ Timer would be: ${questions.length * 15} seconds<br>
+                        🕐 Display time: ${formatTime(questions.length * 15)}
+                    </div>
+                `;
+                
+            } catch (error) {
+                console.error('Module loading failed:', error);
+                results.innerHTML = `
+                    <div class="error">
+                        ❌ Module loading failed:<br>
+                        ${error.message}
+                    </div>
+                `;
+            }
+        };
+        
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            
+            if (minutes === 0) {
+                return `${remainingSeconds}s`;
+            } else if (remainingSeconds === 0) {
+                return `${minutes}m`;
+            } else {
+                return `${minutes}m ${remainingSeconds}s`;
+            }
+        }
+        
+        console.log('Module test page loaded');
+    </script>
+</body>
+</html> 

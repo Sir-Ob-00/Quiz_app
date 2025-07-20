@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Dynamic Timing Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+    </style>
+</head>
+<body>
+    <h1>Simple Dynamic Timing Test</h1>
+    
+    <div id="results"></div>
+    
+    <button onclick="runTest()">Run Test</button>
+
+    <script type="module">
+        // Simple timer calculation function
+        function calculateTimer(questionCount) {
+            return questionCount * 15;
+        }
+        
+        function formatTimeForDisplay(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            
+            if (minutes === 0) {
+                return `${remainingSeconds}s`;
+            } else if (remainingSeconds === 0) {
+                return `${minutes}m`;
+            } else {
+                return `${minutes}m ${remainingSeconds}s`;
+            }
+        }
+        
+        // Test function
+        window.runTest = async function() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<div class="info">Running test...</div>';
+            
+            let output = '';
+            
+            // Test 1: Timer calculation
+            output += '<h3>Test 1: Timer Calculation</h3>';
+            const testCases = [5, 10, 15, 20];
+            testCases.forEach(count => {
+                const seconds = calculateTimer(count);
+                const display = formatTimeForDisplay(seconds);
+                output += `<div class="success">${count} questions = ${seconds}s = ${display}</div>`;
+            });
+            
+            // Test 2: Try to load a question module
+            output += '<h3>Test 2: Module Loading</h3>';
+            try {
+                const module = await import('/js/questions-html-intro.js');
+                const questions = module.questionsHtmlIntro;
+                const timer = calculateTimer(questions.length);
+                const display = formatTimeForDisplay(timer);
+                output += `<div class="success">HTML Introduction: ${questions.length} questions = ${display}</div>`;
+            } catch (error) {
+                output += `<div class="error">Failed to load module: ${error.message}</div>`;
+            }
+            
+            // Test 3: Try to load another module
+            output += '<h3>Test 3: Lists Module</h3>';
+            try {
+                const module = await import('/js/questions-lists.js');
+                const questions = module.questionsLists;
+                const timer = calculateTimer(questions.length);
+                const display = formatTimeForDisplay(timer);
+                output += `<div class="success">Lists: ${questions.length} questions = ${display}</div>`;
+            } catch (error) {
+                output += `<div class="error">Failed to load Lists module: ${error.message}</div>`;
+            }
+            
+            results.innerHTML = output;
+        };
+        
+        console.log('Simple test page loaded');
+    </script>
+</body>
+</html> 

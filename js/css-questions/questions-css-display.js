@@ -1,5 +1,5 @@
 export const questionsCssDisplay = [
-    {
+    /* {
         q: 'What is the default display value for <div> elements?',
         options: [
             'block',
@@ -148,5 +148,5 @@ export const questionsCssDisplay = [
             'stack'
         ],
         answer: 0
-    }
+    } */
 ]; 

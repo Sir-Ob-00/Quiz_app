@@ -1,6 +1,6 @@
 export const questionsCssBoxModel = [
-    {
-        q: 'What are the four parts of the CSS box model?',
+    /*{
+         q: 'What are the four parts of the CSS box model?',
         options: [
             'Content, padding, border, margin',
             'Width, height, padding, margin',
@@ -148,5 +148,5 @@ export const questionsCssBoxModel = [
             'largest-width'
         ],
         answer: 0
-    }
+    } */
 ]; 

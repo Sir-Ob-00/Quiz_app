@@ -1,5 +1,5 @@
 export const questionsMedia = [
-  {
+  /* {
     q: "Which HTML tag is used to embed audio on a webpage?",
     options: ["<sound>", "<media>", "<audio>", "<music>"],
     answer: 2
@@ -98,5 +98,5 @@ export const questionsMedia = [
     q: "What is the purpose of using multiple <source> elements inside a media tag?",
     options: ["Add lyrics or captions", "Allow multiple file downloads", "Provide format fallback", "Load subtitles"],
     answer: 2
-  }
+  } */
 ]; 

@@ -1,5 +1,5 @@
 export const questionsCssColors = [
-    {
+   /*  {
         q: 'Which color value represents red?',
         options: [
             '#FF0000',
@@ -148,5 +148,5 @@ export const questionsCssColors = [
             'scale'
         ],
         answer: 0
-    }
+    } */
 ]; 

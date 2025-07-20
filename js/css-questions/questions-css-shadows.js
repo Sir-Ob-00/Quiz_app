@@ -1,5 +1,5 @@
 export const questionsCssShadows = [
-    {
+    /* {
         q: 'Which CSS property adds a shadow to elements?',
         options: [
             'box-shadow',
@@ -148,5 +148,5 @@ export const questionsCssShadows = [
             'box-shadow is for text only, drop-shadow is for elements'
         ],
         answer: 0
-    }
+    } */
 ]; 

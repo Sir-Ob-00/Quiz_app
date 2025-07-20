@@ -1,5 +1,5 @@
 export const questionsForms = [
-  {
+  /* {
     q: "What does the <form> tag do in HTML?",
     options: [
       "Styles the form",
@@ -113,5 +113,5 @@ export const questionsForms = [
       "min=\"10\" max=\"100\" step=\"10\""
     ],
     answer: 3
-  }
+  } */
 ]; 

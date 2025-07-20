@@ -1,5 +1,5 @@
 export const questionsLists = [
-  {
+  /* {
     q: "Which tag is used to create an unordered list?",
     options: ["<ol>", "<ul>", "<li>", "<list>"],
     answer: 1
@@ -98,5 +98,5 @@ export const questionsLists = [
     q: "Which list tag requires both <dt> and <dd>?",
     options: ["<ol>", "<ul>", "<dl>", "<li>"],
     answer: 2
-  }
+  } */
 ]; 

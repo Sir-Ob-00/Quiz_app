@@ -1,5 +1,5 @@
 export const questionsCssTypography = [
-    {
+    /*  {
         q: 'Which CSS property sets the font family?',
         options: [
             'font-family',
@@ -148,5 +148,5 @@ export const questionsCssTypography = [
             'first-line-indent'
         ],
         answer: 0
-    }
+    } */
 ]; 

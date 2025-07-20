@@ -1,5 +1,5 @@
 export const questionsTextFormatting = [
-    {
+    /* {
         q: 'Which tag is used to define a paragraph in HTML?',
         options: [
             '<para>',
@@ -198,5 +198,5 @@ export const questionsTextFormatting = [
             '<var>'
         ],
         answer: 2
-    }
+    } */
 ]; 

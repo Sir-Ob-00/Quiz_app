@@ -1,5 +1,5 @@
 export const questionsImages = [
-  {
+ /*  {
     q: "Which HTML tag is used to display an image?",
     options: ["<image>", "<img>", "<src>", "<pic>"],
     answer: 1
@@ -98,5 +98,5 @@ export const questionsImages = [
     q: "What does the style=\"height:auto\" do in an image tag?",
     options: ["Prevents image loading", "Keeps the original height", "Maintains aspect ratio", "Adds animation effect"],
     answer: 2
-  }
+  } */
 ]; 

@@ -1,5 +1,5 @@
 export const questionsHtmlIntro = [
-    {
+    /* {
         q: 'What does HTML stand for?',
         options: [
             'Hyperlinks and Text Markup Language',
@@ -98,5 +98,5 @@ export const questionsHtmlIntro = [
             'A tag used to create tables'
         ],
         answer: 2
-    },
+    }, */
 ]; 

@@ -1,5 +1,5 @@
 export const questionsCssBorders = [
-    {
+   /*  {
         q: 'Which CSS property sets the border width?',
         options: [
             'border-width',
@@ -148,5 +148,5 @@ export const questionsCssBorders = [
             'combine'
         ],
         answer: 0
-    }
+    } */
 ]; 

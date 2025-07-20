@@ -1,5 +1,5 @@
 export const questionsTables = [
-  {
+  /* {
     q: "Which tag is used to create a table in HTML?",
     options: ["<form>", "<table>", "<list>", "<grid>"],
     answer: 1
@@ -98,5 +98,5 @@ export const questionsTables = [
     q: "What happens if you omit <tbody>, <thead>, or <tfoot>?",
     options: ["The table breaks", "Browser won't render it", "Table still works, but lacks structure", "Table converts to a list"],
     answer: 2
-  }
+  } */
 ]; 

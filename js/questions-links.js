@@ -1,5 +1,5 @@
 export const questionsLinks = [
-  {
+  /* {
     q: "Which tag is used to create a hyperlink in HTML?",
     options: ["<link>", "<a>", "<href>", "<url>"],
     answer: 1
@@ -98,5 +98,5 @@ export const questionsLinks = [
     q: "What will this anchor do?\n<a href=\"tel:+233501234567\">Call Us</a>",
     options: ["Send SMS to the number", "Call the number (on supported devices)", "Redirect to WhatsApp", "Open Google Maps"],
     answer: 1
-  }
+  } */
 ]; 

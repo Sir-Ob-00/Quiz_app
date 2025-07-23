@@ -220,8 +220,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         ${q.options.map((opt, i) => `
                             <label class="option-label">
                                 <input type="radio" name="option-${index}" value="${i}" 
-                                       ${quizState.answers[index] === i ? 'checked' : ''} 
-                                       aria-label="Answer option ${escapeHTML(opt)}" />
+                                    ${quizState.answers[index] === i ? 'checked' : ''} 
+                                    aria-label="Answer option ${escapeHTML(opt)}" />
                                 ${escapeHTML(opt)}
                             </label><br>
                         `).join('')}

@@ -1,9 +1,9 @@
 export const questionsOther = [
-    {
+    /* {
         q: 'What is the correct syntax for an HTML comment?',
         options: [
             '// This is a comment',
-            '/* This is a comment */',
+            '/* This is a comment *//*',
             '<!-- This is a comment -->',
             '# This is a comment'
         ],
@@ -42,7 +42,7 @@ export const questionsOther = [
         options: [
             '<img src="logo.png" alt="Logo">',
             '<!-- <img src="logo.png" alt="Logo"> -->',
-            '/* <img src="logo.png" alt="Logo"> */',
+            '/* <img src="logo.png" alt="Logo"> *//*',
             '# <img src="logo.png" alt="Logo">'
         ],
         answer: 1
@@ -196,5 +196,5 @@ export const questionsOther = [
             '<p hover="Info">Text</p>'
         ],
         answer: 1
-    },
+    }, */ 
 ]; 

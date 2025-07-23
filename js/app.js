@@ -236,21 +236,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span id="timer">Time left: ${formatTime(quizState.timer)}</span>
                 <span class="time-per-question">(${formatTimeForDisplay(15)} per question)</span>
             </div>
-            <div class="quiz-carousel-container">
-                <button class="carousel-arrow prev" id="carousel-prev" 
+            <button class="carousel-arrow prev" id="carousel-prev" 
                         ${currentIndex === 0 ? 'disabled' : ''} 
                         aria-label="Previous question">
                     ‹
                 </button>
+            <div class="quiz-carousel-container">
+            
                 <div class="quiz-carousel" id="quiz-carousel">
                     ${carouselHTML}
                 </div>
-                <button class="carousel-arrow next" id="carousel-next" 
+        
+            </div>
+            <button class="carousel-arrow next" id="carousel-next" 
                         ${currentIndex === totalQuestions - 1 ? 'disabled' : ''} 
                         aria-label="Next question">
                     ›
                 </button>
-            </div>
             <div class="quiz-nav">
                 <button id="prev-btn" ${currentIndex === 0 ? 'disabled' : ''} aria-label="Previous question">Previous</button>
                 <button id="next-btn" aria-label="${currentIndex === totalQuestions - 1 ? 'Finish quiz' : 'Next question'}">${currentIndex === totalQuestions - 1 ? 'Finish' : 'Next'}</button>

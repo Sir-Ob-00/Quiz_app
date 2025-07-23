@@ -1,0 +1,123 @@
+
+/* Quiz Carousel Container */
+.quiz-carousel-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 2rem auto 1.5rem auto;
+    overflow: hidden;
+    padding: 0 1rem;
+}
+
+.quiz-carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+}
+
+/* Question Card Styles */
+.question-card {
+    background: #ffffff; 
+    color: #212529; 
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    padding: 2rem 1.5rem;
+    min-width: 300px;
+    max-width: 500px;
+    width: 100%;
+    text-align: left;
+    position: relative;
+    transition: all 0.3s ease;
+    /* flex-shrink: 0; */
+    opacity: 0.3;
+    transform: scale(0.9);
+}
+
+.question-card.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 2;
+}
+
+.question-card.prev,
+.question-card.next {
+    opacity: 0.3;
+    transform: scale(0.9);
+}
+
+/* Carousel Navigation Arrows */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 123, 255, 0.9);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+
+    @media (max-width: 600px) {
+        top: 70%;
+        
+    }
+}
+
+.carousel-arrow:hover {
+    background: rgba(0, 123, 255, 1);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-arrow:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: translateY(-50%) scale(1);
+}
+
+.carousel-arrow.prev {
+    left: 5px;
+}
+
+.carousel-arrow.next {
+    right: 10px;
+}
+
+/* Carousel indicators */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.carousel-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.carousel-indicator.active {
+    background: #007BFF;
+}
+
+/* Dark mode indicators */
+.dark-mode .carousel-indicator {
+    background: #555;
+}
+
+.dark-mode .carousel-indicator.active {
+    background: #007BFF;
+}

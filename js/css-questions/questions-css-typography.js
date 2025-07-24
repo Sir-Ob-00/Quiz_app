@@ -1,5 +1,5 @@
 export const questionsCssTypography = [
-    {
+    /* {
         q: 'Which CSS property is used to change the font of text?',
         options: [
             'font-style',
@@ -198,5 +198,5 @@ export const questionsCssTypography = [
             'Hides small letters'
         ],
         answer: 2
-    }
+    } */
 ];

@@ -1,5 +1,5 @@
 export const questionsCssSelectors = [
-    {
+    /* {
         q: 'What does p select?',
         options: [
             'All paragraphs',
@@ -198,5 +198,5 @@ export const questionsCssSelectors = [
             'First sentence'
         ],
         answer: 2
-    } 
+    }  */
 ]; 
